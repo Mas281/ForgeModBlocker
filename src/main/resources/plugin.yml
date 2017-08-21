@@ -1,6 +1,9 @@
 name: ForgeModBlocker
 version: 1.2.3
+
 author: Mas281
+description: Control which mods your players can use
+website: https://www.spigotmc.org/resources/forgemodblocker.45220/
 
 main: me.itsmas.forgemodblocker.ForgeModBlocker
 
@@ -9,5 +12,10 @@ softdepend: [PlaceholderAPI]
 permissions:
   fmb.*:
     default: false
+    children:
+      fmb.bypass: true
+      fmb.update_notification: true
   fmb.bypass:
     default: false
+  fmb.update_notification:
+    default: op

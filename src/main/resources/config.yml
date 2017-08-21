@@ -27,6 +27,6 @@ disallowed-mods-commands:
 - "kick %player% &cIllegal Mods - %disallowed_mods%"
 
 # ForgeModBlocker will periodically check for plugin updates and attempt to download them
-# Set this to the number of minutes you want inbetween update checks
+# Set this to the number of minutes you want in between update checks
 # Default: 20
 update-check-interval: 20

@@ -29,7 +29,7 @@ public class MessageListener implements PluginMessageListener
     /**
      * Weird characters which need replacing from the raw mod string
      */
-    private final String[] weirdChars = {"\u0002", "\u000B", "\u0011", "\u0005", "\u0003", "\u0007", "\u0004", "\u001B", "\u0009", "\f", "\r"};
+    private final String[] weirdChars = {"\u0002", "\u000B", "\u0011", "\u0005", "\u0003", "\u0007", "\u0004", "\u001B", "\u0009", "\f", "\r", "\t", "\n"};
 
     @Override
     public void onPluginMessageReceived(String channel, Player player, byte[] data)
@@ -59,7 +59,7 @@ public class MessageListener implements PluginMessageListener
             string = string.replace(character, " ");
         }
 
-        return string.replace("\t", " ").replace("  ", " ").replace("\n", " ").trim();
+        return string.trim();
     }
 
     /**
