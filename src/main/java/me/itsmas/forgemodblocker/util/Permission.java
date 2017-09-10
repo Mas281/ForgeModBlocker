@@ -7,25 +7,19 @@ import org.bukkit.entity.Player;
  */
 public enum Permission
 {
-    ALL("*", false),
-    UPDATE_NOTIFICATION("update_notification", true),
-    BYPASS("bypass", false);
+    ALL("*"),
+    UPDATE_NOTIFICATION("update_notification"),
+    BYPASS("bypass");
 
-    Permission(String name, boolean opDefault)
+    Permission(String name)
     {
         this.node = "fmb." + name;
-        this.opDefault = opDefault;
     }
 
     /**
      * The permission's node
      */
     private final String node;
-
-    /**
-     * Whether the permission will be given to operators
-     */
-    private final boolean opDefault;
 
     /**
      * Determines whether a player has a {@link Permission}
@@ -36,6 +30,6 @@ public enum Permission
      */
     public static boolean hasPermission(Player player, Permission permission)
     {
-        return (permission.opDefault && player.isOp())  || player.hasPermission(permission.node) || (permission != ALL && hasPermission(player, ALL));
+        return player.hasPermission(permission.node);
     }
 }

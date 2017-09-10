@@ -28,19 +28,15 @@ public class ModManager
         new JoinListener(plugin);
         new MessageListener(plugin);
 
-        Mode mode = EnumUtils.getEnum(Mode.class, plugin.getConfig().getString("mode").toUpperCase());
+        Mode mode = EnumUtils.getEnum(Mode.class, ((String) plugin.getConfig("mode")).toUpperCase());
 
-        if (mode == null)
-        {
-            mode = Mode.BLACKLIST;
-        }
-
-        this.mode = mode;
+        this.mode = mode == null ? Mode.BLACKLIST : mode;
 
         this.blockForge = plugin.getConfig("block-forge", false);
         this.modList = plugin.getConfig("mod-list", new ArrayList<>());
-        disallowedCommands = plugin.getConfig("disallowed-mods-commands", Lists.newArrayList("kick %player% &cIllegal Mods - %disallowed_mods%"));
-        disallowedCommands.replaceAll(C::colour);
+
+        this.disallowedCommands = plugin.getConfig("disallowed-mods-commands", Lists.newArrayList("kick %player% &cIllegal Mods - %disallowed_mods%"));
+        this.disallowedCommands.replaceAll(C::colour);
     }
 
     /**

@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * Main class for the ForgeModBlocker plugin
  *
  * @author Mas281
- * @version 1.2.3
+ * @version 1.2.4
  * @since 1.0
  */
 public class ForgeModBlocker extends JavaPlugin
@@ -40,6 +40,17 @@ public class ForgeModBlocker extends JavaPlugin
         modManager = new ModManager(this);
 
         getCommand("mods").setExecutor(new ModListCommand(this));
+    }
+
+    /**
+     * Fetches a value from the config
+     *
+     * @param path The path to the value
+     * @return The value at the path or null if not present
+     */
+    public <T> T getConfig(String path)
+    {
+        return getConfig(path, null);
     }
 
     /**

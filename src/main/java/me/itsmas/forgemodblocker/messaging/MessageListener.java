@@ -3,10 +3,10 @@ package me.itsmas.forgemodblocker.messaging;
 import me.itsmas.forgemodblocker.ForgeModBlocker;
 import me.itsmas.forgemodblocker.mods.ModData;
 import me.itsmas.forgemodblocker.util.UtilServer;
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +68,7 @@ public class MessageListener implements PluginMessageListener
         for (String info : string.split(" "))
         {
             i++;
-
+        
             if (i % 2 == 0)
             {
                 lastMod = info;

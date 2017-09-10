@@ -31,14 +31,6 @@
     </repositories>
 
     <dependencies>
-        <!-- Spigot API 1.12.1 -->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.12.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Spigot Server 1.12.1 -->
         <dependency>
             <groupId>org.spigotmc</groupId>
