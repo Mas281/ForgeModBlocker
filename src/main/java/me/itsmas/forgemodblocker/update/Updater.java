@@ -201,10 +201,7 @@ public class Updater implements Listener
 
         File updateDir = new File("plugins" + File.separator + "");
 
-        if (!updateDir.exists())
-        {
-            updateDir.mkdir();
-        }
+        updateDir.mkdir();
 
         File pluginFile = new File(updateDir, "ForgeModBlocker.jar");
 
