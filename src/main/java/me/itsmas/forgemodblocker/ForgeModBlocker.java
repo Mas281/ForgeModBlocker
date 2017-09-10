@@ -1,5 +1,6 @@
 package me.itsmas.forgemodblocker;
 
+import me.itsmas.forgemodblocker.commands.ModListCommand;
 import me.itsmas.forgemodblocker.metrics.Metrics;
 import me.itsmas.forgemodblocker.mods.ModManager;
 import me.itsmas.forgemodblocker.placeholder.Placeholders;
@@ -37,6 +38,8 @@ public class ForgeModBlocker extends JavaPlugin
         new Updater(this);
 
         modManager = new ModManager(this);
+
+        getCommand("mods").setExecutor(new ModListCommand(this));
     }
 
     /**

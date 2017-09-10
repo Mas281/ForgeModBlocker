@@ -40,11 +40,6 @@ public class Updater implements Listener
     private static final long UPDATE_CHECK_DELAY = 20L * 60L;
 
     /**
-     * The amount of time between update checks
-     */
-    private final long updateCheckInterval;
-
-    /**
      * The plugin instance
      */
     private final ForgeModBlocker plugin;
@@ -57,23 +52,24 @@ public class Updater implements Listener
     public Updater(ForgeModBlocker plugin)
     {
         this.plugin = plugin;
-
-        this.updateCheckInterval = 20L * 60L * (int) plugin.getConfig("update-check-interval", 20L);
         this.currentVersion = Integer.parseInt(plugin.getDescription().getVersion().replaceAll("\\.", ""));
 
-        UtilServer.registerListener(this);
+        int updateCheckInterval = plugin.getConfig("update-check-interval", 20);
 
-        new BukkitRunnable()
+        if(updateCheckInterval > 0)
         {
-            @Override
-            public void run()
+            new BukkitRunnable()
             {
-                if (checkUpdates())
+                @Override
+                public void run()
                 {
-                    cancel();
+                    if (checkUpdates())
+                    {
+                        cancel();
+                    }
                 }
-            }
-        }.runTaskTimerAsynchronously(plugin, UPDATE_CHECK_DELAY, updateCheckInterval);
+            }.runTaskTimerAsynchronously(plugin, UPDATE_CHECK_DELAY, updateCheckInterval);
+        }
     }
 
     /**
@@ -205,10 +201,7 @@ public class Updater implements Listener
 
         File updateDir = new File("plugins" + File.separator + "");
 
-        if (!updateDir.exists())
-        {
-            updateDir.mkdir();
-        }
+        updateDir.mkdir();
 
         File pluginFile = new File(updateDir, "ForgeModBlocker.jar");
 

@@ -28,5 +28,6 @@ disallowed-mods-commands:
 
 # ForgeModBlocker will periodically check for plugin updates and attempt to download them
 # Set this to the number of minutes you want in between update checks
+# Set to 0 to disable
 # Default: 20
 update-check-interval: 20
